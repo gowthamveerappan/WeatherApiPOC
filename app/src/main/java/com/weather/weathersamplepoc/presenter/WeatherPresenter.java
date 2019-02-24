@@ -65,12 +65,9 @@ public class WeatherPresenter implements IWeatherContract.IWeatherPresenter,Loca
 
     @Override
     public String convertTimestamp(int timeStamp) {
-        Log.e(">>>>>>>>>>>>>>>>>>>","Timestamp"+timeStamp);
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         cal.setTimeInMillis(Long.valueOf(timeStamp));
         String date = DateFormat.format("dd-MM-yyyy hh:mm:ss", cal).toString();
-
-        Log.e(">>>>>>>>>>>>>>>>>>>","date"+date);
         return date;
     }
 
