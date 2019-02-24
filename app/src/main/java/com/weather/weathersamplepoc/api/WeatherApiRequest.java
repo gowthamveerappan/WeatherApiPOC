@@ -35,7 +35,6 @@ public class WeatherApiRequest<T> extends JsonRequest<T> {
 
     @Override
     public String getUrl() {
-        Log.e("jskjdlfksjdkfj",""+baseUrl + latAndLng);
         return baseUrl + latAndLng ;
     }
 

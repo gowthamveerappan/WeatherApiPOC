@@ -31,32 +31,6 @@ public class WeatherPresenter implements IWeatherContract.IWeatherPresenter,Loca
     }
 
     @Override
-    public void onLocationChanged(Location location) {
-        view.gotLocation(String.valueOf(location.getLatitude()),String.valueOf(location.getLongitude()));
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
-    }
-
-    @Override
-    public void getLocation(Context context) {
-        locationUtils = new LocationUtils();
-        locationUtils.getLocation(context,this);
-    }
-
-    @Override
     public String convertCelciusToFarenheit(double celcius){
         /* Convert Celsius to Fahrenheit */
         float farenheitValue = (float) (celcius * (9f / 5) + 32);
@@ -70,8 +44,11 @@ public class WeatherPresenter implements IWeatherContract.IWeatherPresenter,Loca
         String date = DateFormat.format("dd-MM-yyyy hh:mm:ss", cal).toString();
         return date;
     }
-
-
+    /*
+    Method to get the Weather details from third party
+    INPUT : latitude and longitude of device
+    OUTPUT : method from View Object getting called
+     */
     @Override
     public void callWeatherApi(Context context, String latitude, String longitude) {
         ApiRequestManager apiRequestManager = ApiRequestManager.getInstance(context);
@@ -96,5 +73,34 @@ public class WeatherPresenter implements IWeatherContract.IWeatherPresenter,Loca
             }
         });
         apiRequestManager.addToRequestQueue(request);
+    }
+
+    /*
+    Called when location changed
+     */
+    @Override
+    public void onLocationChanged(Location location) {
+        view.gotLocation(String.valueOf(location.getLatitude()),String.valueOf(location.getLongitude()));
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
+    @Override
+    public void getLocation(Context context) {
+        locationUtils = new LocationUtils();
+        locationUtils.getLocation(context,this);
     }
 }
