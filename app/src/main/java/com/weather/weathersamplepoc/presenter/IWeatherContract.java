@@ -10,6 +10,7 @@ public class IWeatherContract {
         public void getLocation(Context context);
         public void callWeatherApi(Context context,String latitude,String longitude);
         public String convertCelciusToFarenheit(double celciusValue);
+        public String convertTimestamp(int timeStamp);
     }
 
     public interface IWeatherView{

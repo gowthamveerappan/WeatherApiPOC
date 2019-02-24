@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements IWeatherContract.
         if (dialog.isShowing()) {
             dialog.dismiss();
         }
-        timeZoneTv.setText("" + responseObj.getCurrently().getTime());
+        timeZoneTv.setText("" + weatherPresenter.convertTimestamp(responseObj.getCurrently().getTime()));
         tempertureInCeTv.setText("" + responseObj.getCurrently().getTemperature());
         tempertureInFaTv.setText(weatherPresenter.convertCelciusToFarenheit(responseObj.getCurrently().getTemperature()));
         aTemperatureTv.setText("" + responseObj.getCurrently().getApparentTemperature());

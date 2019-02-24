@@ -4,6 +4,7 @@ import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -16,6 +17,9 @@ import com.weather.weathersamplepoc.plain.Example;
 import com.weather.weathersamplepoc.utils.LocationUtils;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class WeatherPresenter implements IWeatherContract.IWeatherPresenter,LocationListener {
 
@@ -58,6 +62,18 @@ public class WeatherPresenter implements IWeatherContract.IWeatherPresenter,Loca
         float farenheitValue = (float) (celcius * (9f / 5) + 32);
         return String.valueOf(farenheitValue);
     }
+
+    @Override
+    public String convertTimestamp(int timeStamp) {
+        Log.e(">>>>>>>>>>>>>>>>>>>","Timestamp"+timeStamp);
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        cal.setTimeInMillis(Long.valueOf(timeStamp));
+        String date = DateFormat.format("dd-MM-yyyy hh:mm:ss", cal).toString();
+
+        Log.e(">>>>>>>>>>>>>>>>>>>","date"+date);
+        return date;
+    }
+
 
     @Override
     public void callWeatherApi(Context context, String latitude, String longitude) {
