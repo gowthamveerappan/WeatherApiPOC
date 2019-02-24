@@ -9,10 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.weather.weathersamplepoc.presenter.IWeatherContract;
+import com.weather.weathersamplepoc.presenter.WeatherPresenter;
 import com.weather.weathersamplepoc.utils.NetworkUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IWeatherContract.IWeatherView {
 
+    WeatherPresenter weatherPresenter = new WeatherPresenter(this);
+    LocationManager locationManager;
     private int MY_LOCATION_REQUEST_CODE =1111;
 
     @Override
@@ -23,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         //Checking Network connectivity
         if(NetworkUtils.isNetworkConnected(this) == true){
             if(checkLocationPermission() == true){
-
+                weatherPresenter.getLocation(this);
             }
         }else{
             Toast.makeText(this,R.string.offline_text,Toast.LENGTH_SHORT).show();
@@ -49,10 +53,15 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == MY_LOCATION_REQUEST_CODE) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
+                weatherPresenter.getLocation(this);
             } else {
                 this.finish();
             }
         }
+    }
+
+    @Override
+    public void gotLocation(String latitude, String longitude) {
+
     }
 }
