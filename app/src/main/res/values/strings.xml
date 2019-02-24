@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WeatherSamplePOC</string>
+
+    <string name="offline_text">Network Connection required</string>
 </resources>
