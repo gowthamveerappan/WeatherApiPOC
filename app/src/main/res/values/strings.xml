@@ -2,4 +2,14 @@
     <string name="app_name">WeatherSamplePOC</string>
 
     <string name="offline_text">Network Connection required</string>
+
+    <string name="current_lat">Current Latitude</string>
+    <string name="current_long">Current Longitude</string>
+    <string name="time">Time</string>
+    <string name="temperature_in_ce">Temperature(in CEL)</string>
+    <string name="temperature_in_fa">Temperature(in FA)</string>
+    <string name="apparent_temperature">Apparent Temperature</string>
+    <string name="dew_point">Dew Point</string>
+    <string name="windspeed">WindSpeed</string>
+    <string name="humidity">Humidity</string>
 </resources>

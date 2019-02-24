@@ -1,6 +1,7 @@
 package com.weather.weathersamplepoc;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.weather.weathersamplepoc.plain.Example;
 import com.weather.weathersamplepoc.presenter.IWeatherContract;
 import com.weather.weathersamplepoc.presenter.WeatherPresenter;
 import com.weather.weathersamplepoc.utils.NetworkUtils;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements IWeatherContract.
 
     WeatherPresenter weatherPresenter = new WeatherPresenter(this);
     LocationManager locationManager;
+    private ProgressDialog dialog;
     private int MY_LOCATION_REQUEST_CODE =1111;
 
     TextView latitudeTv,longitudeTv,timeZoneTv,tempertureInCeTv,tempertureInFaTv,aTemperatureTv,dewPointTv,windSpeedTv,humidityTv;
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements IWeatherContract.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dialog = new ProgressDialog(this);
 
         latitudeTv = (TextView)findViewById(R.id.latitudeTv);
         longitudeTv = (TextView)findViewById(R.id.longitudeTv);
@@ -76,6 +81,29 @@ public class MainActivity extends AppCompatActivity implements IWeatherContract.
 
     @Override
     public void gotLocation(String latitude, String longitude) {
-        Log.e(">>>>>>>","<<<<<<"+latitude);
+        latitudeTv.setText(latitude);
+        longitudeTv.setText(longitude);
+        weatherPresenter.callWeatherApi(MainActivity.this,latitude,longitude);
+    }
+
+    @Override
+    public void loadWeatherValues(Example responseObj) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
+        timeZoneTv.setText("" + responseObj.getCurrently().getTime());
+        tempertureInCeTv.setText("" + responseObj.getCurrently().getTemperature());
+        tempertureInFaTv.setText(weatherPresenter.convertCelciusToFarenheit(responseObj.getCurrently().getTemperature()));
+        aTemperatureTv.setText("" + responseObj.getCurrently().getApparentTemperature());
+        dewPointTv.setText("" + responseObj.getCurrently().getDewPoint());
+        windSpeedTv.setText("" + responseObj.getCurrently().getWindSpeed());
+        humidityTv.setText("" + responseObj.getCurrently().getHumidity());
+    }
+
+    @Override
+    public void showApiError(String value) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
     }
 }
