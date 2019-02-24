@@ -7,6 +7,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.weather.weathersamplepoc.presenter.IWeatherContract;
@@ -19,10 +21,22 @@ public class MainActivity extends AppCompatActivity implements IWeatherContract.
     LocationManager locationManager;
     private int MY_LOCATION_REQUEST_CODE =1111;
 
+    TextView latitudeTv,longitudeTv,timeZoneTv,tempertureInCeTv,tempertureInFaTv,aTemperatureTv,dewPointTv,windSpeedTv,humidityTv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        latitudeTv = (TextView)findViewById(R.id.latitudeTv);
+        longitudeTv = (TextView)findViewById(R.id.longitudeTv);
+        timeZoneTv = (TextView)findViewById(R.id.timezoneTv);
+        tempertureInCeTv = (TextView)findViewById(R.id.temperatureInCelciusTv);
+        tempertureInFaTv = (TextView)findViewById(R.id.temperatureInFarenTv);
+        aTemperatureTv = (TextView)findViewById(R.id.aTemperatureTv);
+        dewPointTv = (TextView)findViewById(R.id.dewPointTv);
+        windSpeedTv = (TextView)findViewById(R.id.windSpeedTv);
+        humidityTv = (TextView)findViewById(R.id.humidityTv);
 
         //Checking Network connectivity
         if(NetworkUtils.isNetworkConnected(this) == true){
@@ -62,6 +76,6 @@ public class MainActivity extends AppCompatActivity implements IWeatherContract.
 
     @Override
     public void gotLocation(String latitude, String longitude) {
-
+        Log.e(">>>>>>>","<<<<<<"+latitude);
     }
 }
