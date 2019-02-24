@@ -3,16 +3,242 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/current_lat"/>
+
+                <TextView
+                    android:id="@+id/latitudeTv"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:text="-"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/current_long"/>
+
+                <TextView
+                    android:id="@+id/longitudeTv"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:text="-"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/time"/>
+
+                <TextView
+                    android:id="@+id/timezoneTv"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:text="-"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/temperature_in_ce"/>
+
+                <TextView
+                    android:id="@+id/temperatureInCelciusTv"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:text="-"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/temperature_in_fa"/>
+
+                <TextView
+                    android:id="@+id/temperatureInFarenTv"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:text="-"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/apparent_temperature"/>
+
+                <TextView
+                    android:id="@+id/aTemperatureTv"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:text="-"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/dew_point"/>
+
+                <TextView
+                    android:id="@+id/dewPointTv"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:text="-"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/windspeed"/>
+
+                <TextView
+                    android:id="@+id/windSpeedTv"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:text="-"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/humidity"/>
+
+                <TextView
+                    android:id="@+id/humidityTv"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:text="-"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
